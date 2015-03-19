@@ -21,3 +21,11 @@ func TestIsPath(t *testing.T) {
 		assert.Equal(t, v.is, IsPath(v.path))
 	}
 }
+
+func TestPathWithSpacesIsPath(t *testing.T) {
+	assert.True(t, IsPath("/help wanted"))
+	assert.True(t, IsPath("help wanted/"))
+	assert.True(t, IsPath("/path/help wanted"))
+	assert.True(t, IsPath("path/help wanted/"))
+	assert.False(t, IsPath("help wanted"))
+}
